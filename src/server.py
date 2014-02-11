@@ -13,11 +13,7 @@ app = Flask(
 @app.route('/', methods=['GET'])
 def index():
 
-    try:
-        datasource = request.args.getlist('datasource')
-    except:
-        datasource = 'none'
-    return render_template('index.html', datasource)
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

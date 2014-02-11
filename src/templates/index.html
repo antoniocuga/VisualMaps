@@ -9,14 +9,30 @@
         <script src="{{ url_for('static', filename='libs/countries.js') }}"></script>
     </head>
     <body>
-        <div id="map" style="position: relative; width: 50%; height: 550px;"></div>
+        <div id="map" style="position: relative; width: 80%; height: 550px;"></div>
         <script type="text/javascript">
-            var basic_choropleth = new Datamap({
-                element: document.getElementById("map"),
-                projection: 'mercator',
+            var map = new Datamap({
+                element: document.getElementById("map"),                
+                projection: 'equirectangular',
+                geographyConfig: {
+                    //highlightOnHover: false,
+                    //popupOnHover: false,
+                    //highlightBorderColor: '#bada55',
+                    popupTemplate: function(geography, data) {
+                        return '<div class="hoverinfo">' +
+                                '<b>' + data.pais + '</b>' +
+                                '<br /><u>Medallas</u>' +
+                                '<br />Oro:' + data.oro +
+                                '<br />Plata:' + data.plata +
+                                '<br />Bronce:' + data.bronce +
+                                '</div>'
+                    },
+                    highlightBorderWidth: 3
+                },
                 fills: colors,
                 data: countries //countries itera con los datos
             });
+            //map.labels();
         </script>
     </body>
 </html>
