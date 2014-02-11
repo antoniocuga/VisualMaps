@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Visual Maps</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <script src="{{ url_for('static', filename='libs/datamaps.world.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='libs/countries.js') }}"></script>
+    </head>
+    <body>
+        <div id="map" style="position: relative; width: 50%; height: 550px;"></div>
+        <script type="text/javascript">
+            var basic_choropleth = new Datamap({
+                element: document.getElementById("map"),
+                projection: 'mercator',
+                fills: colors,
+                data: countries //countries itera con los datos
+            });
+        </script>
+    </body>
+</html>
